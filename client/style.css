@@ -28,3 +28,22 @@ TO DO: MAKE IT STYLIN'
 .winner {
 	background-color: #ffffcc;
 }
+
+.ng-dirty .ng-invalid {
+	border-color: red;
+	border-width: 3px;
+}
+
+.newheadline {
+	width: 500px;
+	position:relative;
+	display:inline;
+}
+.errorMessage {
+	color:red;
+	font-style: italic;
+}
+
+input[type='text'] {
+	width: 350px;
+}

@@ -1,44 +1,52 @@
 <div ng-app="abArchive" ng-controller="testController as testCtrl">
 		<h1>New Ad Copy Test</h1>
-		<form>
+		<form name="newTestForm" novalidate>
 			 <!-- AD VARIATION 1 BEGINS -->
 			<h2> Ad Variation 1 (Control) </h2>
 			<div class='newheadline'>
 				Headline:
-				<input type="text" name="headline_1" ng-model="testCtrl.ad1.headline">
+				<input type="text" name="headline_1" ng-model="testCtrl.ad1.headline" ng-maxLength="25">
+				<span class="errorMessage" ng-show="newTestForm.headline_1.$invalid">Max 25 Chars</span>
 			</div>
 			<div class='description'>
 				Description Line 1:
-				<input type="text" name="desc1_1" ng-model="testCtrl.ad1.descriptionLine1">
+				<input type="text" name="desc1_1" ng-model="testCtrl.ad1.descriptionLine1" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.desc1_1.$invalid">Max 35 Chars</span>
 			</div>
 			<div class='description'>
 				Description Line 2:
-				<input type="text" name="desc2_1" ng-model="testCtrl.ad1.descriptionLine2">
+				<input type="text" name="desc2_1" ng-model="testCtrl.ad1.descriptionLine2" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.desc2_1.$invalid">Max 35 Chars</span>
 			</div>
 			<div class='displayURL'>
 				Display URL:
-				<input type="text" name="dispURL_1" ng-model="testCtrl.ad1.displayURL">
+				<input type="text" name="dispURL_1" ng-model="testCtrl.ad1.displayURL" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.dispURL_1.$invalid">Must be valid URL and Max 35 Chars</span>
 			</div>
 			<!-- AD VARIATION 2 BEGINS -->
 			<h2> Ad Variation 2 (Test) </h2>
 			<div class='newheadline'>
 				Headline:
-				<input type="text" name="headline_2" ng-model="testCtrl.ad2.headline">
+				<input type="text" name="headline_2" ng-model="testCtrl.ad2.headline" ng-maxLength="25">
+				<span class="errorMessage" ng-show="newTestForm.headline_2.$invalid">Max 25 Chars</span>
 			</div>
 			<div class='description'>
 				Description Line 1:
-				<input type="text" name="desc1_2" ng-model="testCtrl.ad2.descriptionLine1">
+				<input type="text" name="desc1_2" ng-model="testCtrl.ad2.descriptionLine1" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.desc1_2.$invalid">Max 35 Chars</span>
 			</div>
 			<div class='description'>
 				Description Line 2:
-				<input type="text" name="desc2_2" ng-model="testCtrl.ad2.descriptionLine2">
+				<input type="text" name="desc2_2" ng-model="testCtrl.ad2.descriptionLine2" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.desc2_2.$invalid">Max 35 Chars</span>
 			</div>
 			<div class='displayURL'>
 				Display URL:
-				<input type="text" name="dispURL_2" ng-model="testCtrl.ad2.displayURL">
+				<input type="text" name="dispURL_2" ng-model="testCtrl.ad2.displayURL" ng-maxLength="35">
+				<span class="errorMessage" ng-show="newTestForm.dispURL_2.$invalid">Must be valid URL and Max 35 Chars</span>
 			</div>
 			<!-- SUBMIT BUTTON -->
-			<input class= "Launch" type="submit" value="Launch" ng-click="testCtrl.addNew()" ng-href="../#currenttests">
+			<input class= "Launch" type="submit" value="Launch" ng-click="testCtrl.addNew()">
 		</form>
 
 	</div>
