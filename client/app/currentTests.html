@@ -1,9 +1,9 @@
 	<div ng-app="abArchive.currentTests" ng-controller="CurrentTestsController as currentCtrl">
 		<h1>Current Ad Copy Tests</h1>
 			<table>
-				<tr ng-repeat="test in currentCtrl.currentTests" ng-click='currentCtrl.toggleInput(test._id)'>
-					<td>
-					<table>
+				<tr ng-repeat="test in currentCtrl.currentTests">
+					<td ng-click='currentCtrl.toggleInput(test._id)'>
+					<table ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}">
 						<tr>
 							<td>
 								<div class='headline'>{{test.headline_1}}</div>
@@ -18,15 +18,16 @@
 								<input type='text' value="{{test.clicks_1}}" ng-model='currentCtrl.updateTest.clicks_1' ng-show="test._id === currentCtrl.showInput">
 								<div class='impressions'>Impressions: {{test.impressions_1}}</div>
 								<input type='text' value="{{test.impressions_1}}" ng-model='currentCtrl.updateTest.impressions_1' ng-show="test._id === currentCtrl.showInput">
-								<div class='ctr'>CTR: {{test.ctr_1}}</div>
+								<div class='ctr'>CTR: {{(test.ctr_1*100).toFixed(2)+"%"}}</div>
+								<div class='winnerText' ng-show="test.winner === true && test.ctr_1 > test.ctr_2"> WINNER! </div>
 							</td>
 						</tr>	
 					</table>
 					<td class='vs'>
 					vs. 
 					</td>
-					<td>
-						<table>
+					<td ng-click='currentCtrl.toggleInput(test._id)'>
+						<table ng-class="{winner:test.winner === true && test.ctr_1 < test.ctr_2}">
 							<tr>
 								<td>
 									<div class='headline'>{{test.headline_2}}</div>
@@ -41,14 +42,15 @@
 									<input type='text' ng-model='currentCtrl.updateTest.clicks_2' ng-show="test._id === currentCtrl.showInput">
 									<div class='impressions'>Impressions: {{test.impressions_2}}</div>
 									<input type='text' value="{{test.impressions_2}}" ng-model='currentCtrl.updateTest.impressions_2' ng-show="test._id === currentCtrl.showInput">
-									<input type='button' value='Update' ng-show="test._id === currentCtrl.showInput" ng-click='currentCtrl.updateTestData(test._id)'>
-									<div class='ctr'>CTR: {{test.ctr_2}}</div>
+									<input type='button' value='Update' ng-show="test._id === currentCtrl.showInput" ng-click='currentCtrl.updateTestData(test._id,$index)'>
+									<div class='ctr'>CTR: {{(test.ctr_2*100).toFixed(2)+"%"}}</div>
+									<div class='winnerText' ng-show="test.winner === true && test.ctr_1 < test.ctr_2"> WINNER! </div>
 								</td>
 							</tr>	
 						</table>
 					</td>
 					<td>
-						<input type='submit' value="delete">
+						<input type='submit' value="delete" ng-click="currentCtrl.delete(test._id,$index)">
 
 					</td>
 				</tr>

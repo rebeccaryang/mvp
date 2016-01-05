@@ -27,14 +27,29 @@ app.factory('Tests', function($http){
 			console.log("Successfully submitted post request to /tests/update");
 		})
 	}
-	var deleteTest = function(testObj){
-
+	var deleteTest = function(testID){
+		return $http({
+			method:'POST',
+			url:'/tests/delete',
+			data:{testID:testID}
+		}).then(function(resp){
+			console.log(res);
+			$route.reload()
+		}, function(err){
+			console.log(err);
+		})
 	}
 	var statisticallySignificant = function(clicks1, impressions1, clicks2, impressions2){
 		var divis = (impressions1 + impressions2)*(clicks1 + clicks2)
 		var ev1 = impressions1/divis;
 		var ev2 = impressions2/divis;
 		var chisq = (Math.pow((ev1-clicks1),2)/ev1)+(Math.pow(ev2-clicks2,2)/ev2);
+		var desiredchisq = 3.84
+		if(chisq > desiredchisq){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	return {
 		submitTest: submitTest,

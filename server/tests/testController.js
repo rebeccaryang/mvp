@@ -41,9 +41,21 @@ module.exports = {
 					if(err){
 						console.log('Error with saving!');
 						console.log(err);	
+					} else {
+						return docuThing;
 					}
 				})
 
+			})
+		},
+		deleteTest: function(req,res){
+			var id = req.body.testID;
+			Test.findOneAndRemove({_id:id}, function(err,doc,res){
+				if(err){
+					console.log("ERROR")
+				} else {
+					return id;
+				}
 			})
 		}
 	}

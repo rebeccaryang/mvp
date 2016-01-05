@@ -20,3 +20,11 @@ TO DO: MAKE IT STYLIN'
 	font-style:italic;
 
 }
+
+.winnerText {
+	color:purple;
+}
+
+.winner {
+	background-color: #ffffcc;
+}

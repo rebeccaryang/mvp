@@ -27,7 +27,7 @@ app.post('/tests/update', function(req,res){
 })
 
 app.post('/tests/delete', function(req,res){
-	// TO DO: FIGURE THIS OUT
+	testController.tests.deleteTest(req,res)
 })
 // app.use(express.static("client")); // why doesn't the below code work?
 app.use(express.static(path.join(__dirname ,'../client')));
