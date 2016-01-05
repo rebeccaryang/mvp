@@ -7,6 +7,7 @@ app.factory('Tests', function($http){
 			url: '/tests',
 			data: testObj
 		})
+		console.log("Attempting to submit test")
 	};
 	var getTests = function(callback){
 		return $http({
@@ -17,8 +18,12 @@ app.factory('Tests', function($http){
 		})
 
 	}
+	var deleteTest = function(testObj){
+		
+	}
 	return {
 		submitTest: submitTest,
-		getTests: getTests
+		getTests: getTests,
+		deleteTest: deleteTest
 	};
 });

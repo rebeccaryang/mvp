@@ -15,7 +15,6 @@ mongoose.connect('mongodb://localhost/abarchive');
 
 app.set("port", 3000);
 app.post('/tests', function(req,res){
-	console.log(req.body);
 	testController.tests.post(req,res);
 })
 
@@ -23,6 +22,9 @@ app.get('/tests', function(req,res){
 	testController.tests.get(req,res);
 })
 
+app.post('/tests/delete' function(req,res){
+	// TO DO: FIGURE THIS OUT
+})
 // app.use(express.static("client")); // why doesn't the below code work?
 app.use(express.static(path.join(__dirname ,'../client')));
 

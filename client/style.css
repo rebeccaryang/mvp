@@ -3,8 +3,20 @@ TO DO: MAKE IT STYLIN'
 */
 .headline {
 	color:blue;
+	padding-top: 10px
 }
 
 .display {
 	color:green;
+}
+
+.vs {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.metrics {
+	color:grey;
+	font-style:italic;
+
 }

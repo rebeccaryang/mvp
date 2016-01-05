@@ -1,58 +1,32 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8" />
 		<title>A/B Archive</title>
+		<link rel='stylesheet' type="text/css" href="style.css" />
 		<!-- Dependencies -->
 		<script src="bower_components/underscore/underscore.js"></script>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
 		<!-- My Scripts -->
 		<script src="services/services.js"></script>
 		<script src="app.js"></script>
 		<script src="app/currentTests.js"></script>
+		<script src="app/newTest.js"></script>
 	</head>
-	<body ng-app="abArchive" ng-controller="testController as testCtrl">
-		<h1>New Ad Copy Test</h1>
-		<form>
-			 <!-- AD VARIATION 1 BEGINS -->
-			<h2> Ad Variation 1 (Control) </h2>
-			<div class='headline'>
-				Headline:
-				<input type="text" name="headline_1" ng-model="testCtrl.ad1.headline">
-			</div>
-			<div class='description'>
-				Description Line 1:
-				<input type="text" name="desc1_1" ng-model="testCtrl.ad1.descriptionLine1">
-			</div>
-			<div class='description'>
-				Description Line 2:
-				<input type="text" name="desc2_1" ng-model="testCtrl.ad1.descriptionLine2">
-			</div>
-			<div class='displayURL'>
-				Display URL:
-				<input type="text" name="dispURL_1" ng-model="testCtrl.ad1.displayURL">
-			</div>
-			<!-- AD VARIATION 2 BEGINS -->
-			<h2> Ad Variation 2 (Test) </h2>
-			<div class='headline'>
-				Headline:
-				<input type="text" name="headline_2" ng-model="testCtrl.ad2.headline">
-			</div>
-			<div class='description'>
-				Description Line 1:
-				<input type="text" name="desc1_2" ng-model="testCtrl.ad2.descriptionLine1">
-			</div>
-			<div class='description'>
-				Description Line 2:
-				<input type="text" name="desc2_2" ng-model="testCtrl.ad2.descriptionLine2">
-			</div>
-			<div class='displayURL'>
-				Display URL:
-				<input type="text" name="dispURL_2" ng-model="testCtrl.ad2.displayURL">
-			</div>
-			<!-- SUBMIT BUTTON -->
-			<input class= "Launch" type="submit" value="Launch" ng-click="testCtrl.addNew()">
-		</form>
+	<body ng-app="abArchive">
+	<div class="navigation">
+		<ul>
+			<li>
+				<a href="/#currenttests">Current Tests</a>
+			</li>
+			<li>
+				<a href="/#newtest">New Test</a>
+			</li>
+		</ul>
+	</div>
+	 <ng-view></ng-view>
 
 	</body>
 </html>

@@ -8,5 +8,6 @@ app.controller('CurrentTestsController', function(Tests){
 			that.currentTests.push(elem);
 			console.log(that.currentTests);
 		})
-	})  
+	})
+	  
 });

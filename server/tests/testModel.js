@@ -9,10 +9,10 @@ var adTest = mongoose.Schema({
 	desc1_2: String,
 	desc2_2: String,
 	display_2: String,
-	clicks_1: Number,
-	impressions_1: Number,
-	clicks_2: Number,
-	impressions_2: Number
+	clicks_1: {type: Number, default:0},
+	impressions_1: {type: Number, default:0},
+	clicks_2: {type: Number, default:0},
+	impressions_2: {type:Number, default:0}
 });
 
 var Test = mongoose.model('Test', adTest);
