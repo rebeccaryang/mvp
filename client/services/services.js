@@ -40,15 +40,20 @@ app.factory('Tests', function($http){
 		})
 	}
 	var statisticallySignificant = function(clicks1, impressions1, clicks2, impressions2){
-		var divis = (impressions1 + impressions2)*(clicks1 + clicks2)
-		var ev1 = impressions1/divis;
-		var ev2 = impressions2/divis;
+		clicks1 = parseInt(clicks1)
+		impressions1 = parseInt(impressions1)
+		clicks2 = parseInt(clicks2)
+		impressions2 = parseInt(impressions2)
+		var divis = (impressions1+impressions2)
+		var ev1 = impressions1*(clicks1+clicks2)/divis;
+		var ev2 = impressions2*(clicks1+clicks2)/divis;
 		var chisq = (Math.pow((ev1-clicks1),2)/ev1)+(Math.pow(ev2-clicks2,2)/ev2);
 		var desiredchisq = 3.84
 		if(chisq > desiredchisq){
 			return true;
 		} else {
 			return false;
+
 		}
 	}
 	return {

@@ -28,6 +28,7 @@ app.controller('CurrentTestsController', function(Tests){
 		this.currentTests[index].ctr_1 = this.updateTest.clicks_1/this.updateTest.impressions_1;
 		this.currentTests[index].ctr_2 = this.updateTest.clicks_2/this.updateTest.impressions_2;
 		this.currentTests[index].winner = Tests.statisticallySignificant(this.updateTest.clicks_1,this.updateTest.impressions_1,this.updateTest.clicks_2,this.updateTest.impressions_2)
+		console.log(this.currentTests[index].winner)
 	}
 	this.delete = function(id,index){
 		Tests.deleteTest(id);
