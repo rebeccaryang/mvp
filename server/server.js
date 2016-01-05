@@ -23,7 +23,7 @@ app.get('/tests', function(req,res){
 })
 
 app.post('/tests/update', function(req,res){
-	// TO DO: FIGURE THIS OUT
+	testController.tests.update(req,res);
 })
 
 app.post('/tests/delete', function(req,res){

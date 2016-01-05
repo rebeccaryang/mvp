@@ -19,7 +19,7 @@ module.exports = {
 			})
 		},
 		post: function(req, res){
-			console.log(req.body)
+			console.log(req.body);
 			var newTest = new Test(req.body);
 			newTest.save(function(err,content){
 				if(err){
@@ -28,6 +28,22 @@ module.exports = {
 				} else {
 					return content;
 				}
+			})
+		},
+		update: function(req, res){
+			var id = req.body.testID
+			Test.findById(id, function(err, docuThing){
+				docuThing.clicks_1 = req.body.clicks1;
+				docuThing.clicks_2 = req.body.clicks2;
+				docuThing.impressions_1 = req.body.impressions1;
+				docuThing.impressions_2 = req.body.impressions2;
+				docuThing.save(function(err){
+					if(err){
+						console.log('Error with saving!');
+						console.log(err);	
+					}
+				})
+
 			})
 		}
 	}

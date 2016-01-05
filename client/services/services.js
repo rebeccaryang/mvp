@@ -12,7 +12,7 @@ app.factory('Tests', function($http){
 	var getTests = function(callback){
 		return $http({
 			method:'GET',
-			url: '/tests',
+			url: '/tests'
 		}).then( function(resp) {
 			callback(resp.data);
 		})
@@ -20,7 +20,11 @@ app.factory('Tests', function($http){
 	}
 	var updateTestData = function(testID, clicks1,impressions1,clicks2,impressions2){
 		return $http({
-			
+			method:'POST',
+			url:'/tests/update',
+			data: {testID: testID, clicks1:clicks1, impressions1:impressions1, clicks2:clicks2, impressions2:impressions2}
+		}).then( function(resp){
+			console.log("Successfully submitted post request to /tests/update");
 		})
 	}
 	var deleteTest = function(testObj){
