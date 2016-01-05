@@ -2,9 +2,12 @@
 		<div class="subtitle">Current Ad Copy Tests</div>
 		<br>
 		<i>Statistically significant winners will be highlighted</i>
+		<div class="searchBarContainer">
+			<input class="searchBar" type='text' ng-model='searchBar'>
+		</div>
 			<div class="testContainer">
 			<table>
-				<tr ng-repeat="test in currentCtrl.currentTests">
+				<tr ng-repeat="test in currentCtrl.currentTests | filter:searchBar">
 					<td ng-click='currentCtrl.toggleInput(test._id)'>
 					<table class="testDisplay" ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}">
 						<tr>
