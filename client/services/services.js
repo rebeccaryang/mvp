@@ -5,13 +5,20 @@ app.factory('Tests', function($http){
 		return $http({
 			method: 'POST',
 			url: '/tests',
-			data: testObj,
-			'content-type':'application/json'
-		}).then( function(resp){
-			return resp;
-		} )
+			data: testObj
+		})
 	};
+	var getTests = function(callback){
+		return $http({
+			method:'GET',
+			url: '/tests',
+		}).then( function(resp) {
+			callback(resp.data);
+		})
+
+	}
 	return {
-		submitTest: submitTest
+		submitTest: submitTest,
+		getTests: getTests
 	};
 });

@@ -1,4 +1,4 @@
-var app = angular.module('abArchive', ['abArchive.services']);
+var app = angular.module('abArchive', ['abArchive.services','abArchive.currentTests']);
 
 app.controller('testController', function(Tests){
 	this.ad1 = {
@@ -15,11 +15,22 @@ app.controller('testController', function(Tests){
 		displayURL:""
 	};
 
+	this.obj = {
+
+	}
+
 	this.addNew = function(){
 		var obj = {}
-		obj.ad1 = this.ad1;
-		obj.ad2 = this.ad2;
+		obj.headline_1 = this.ad1.headline;
+		obj.headline_2 = this.ad2.headline;
+		obj.desc1_1 = this.ad1.descriptionLine1;
+		obj.desc1_2 = this.ad2.descriptionLine1;
+		obj.desc2_1 = this.ad1.descriptionLine2;
+		obj.desc2_2 = this.ad2.descriptionLine2;
+		obj.display_1 = this.ad1.displayURL;
+		obj.display_2 = this.ad2.displayURL;
 		console.log("Add new being called on app.js")
+		console.log(obj);
 		Tests.submitTest(obj);
 	}
 })
