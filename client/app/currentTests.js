@@ -5,9 +5,12 @@ app.controller('CurrentTestsController', function(Tests){
 	var that = this;
 	Tests.getTests(function(data){
 		_.each(data, function(elem){
-			that.currentTests.push(elem);
-			console.log(that.currentTests);
-		})
-	})
-	  
+			var test = elem;
+			test.ctr_1 = elem.clicks_1/elem.impressions_1;
+			test.ctr_2 = elem.clicks_2/elem.impressions_2;
+			that.currentTests.push(test);
+		});
+		console.log(that.currentTests);
+	});
+	 
 });

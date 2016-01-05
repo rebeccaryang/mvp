@@ -12,7 +12,11 @@ var adTest = mongoose.Schema({
 	clicks_1: {type: Number, default:0},
 	impressions_1: {type: Number, default:0},
 	clicks_2: {type: Number, default:0},
-	impressions_2: {type:Number, default:0}
+	impressions_2: {type:Number, default:0},
+	ev_1: {type:Number, default:0},
+	ev_2: {type:Number, default:0},
+	chi_sq: {type:Number, default:0},
+	winner: {type:Boolean, default:false}	
 });
 
 var Test = mongoose.model('Test', adTest);

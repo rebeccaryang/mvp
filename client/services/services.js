@@ -18,12 +18,23 @@ app.factory('Tests', function($http){
 		})
 
 	}
+	var updateTestData = function(clicks1,impressions1,clicks2,impressions2){
+
+	}
 	var deleteTest = function(testObj){
-		
+
+	}
+	var statisticallySignificant = function(clicks1, impressions1, clicks2, impressions2){
+		var divis = (impressions1 + impressions2)*(clicks1 + clicks2)
+		var ev1 = impressions1/divis;
+		var ev2 = impressions2/divis;
+		var chisq = (Math.pow((ev1-clicks1),2)/ev1)+(Math.pow(ev2-clicks2,2)/ev2);
 	}
 	return {
 		submitTest: submitTest,
 		getTests: getTests,
-		deleteTest: deleteTest
+		deleteTest: deleteTest,
+		updateTestData:updateTestData
+		statisticallySignificant:statisticallySignificant
 	};
 });

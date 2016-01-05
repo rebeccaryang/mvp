@@ -22,7 +22,11 @@ app.get('/tests', function(req,res){
 	testController.tests.get(req,res);
 })
 
-app.post('/tests/delete' function(req,res){
+app.post('/tests/update', function(req,res){
+	// TO DO: FIGURE THIS OUT
+})
+
+app.post('/tests/delete', function(req,res){
 	// TO DO: FIGURE THIS OUT
 })
 // app.use(express.static("client")); // why doesn't the below code work?
