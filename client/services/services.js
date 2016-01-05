@@ -18,8 +18,10 @@ app.factory('Tests', function($http){
 		})
 
 	}
-	var updateTestData = function(clicks1,impressions1,clicks2,impressions2){
-
+	var updateTestData = function(testID, clicks1,impressions1,clicks2,impressions2){
+		return $http({
+			
+		})
 	}
 	var deleteTest = function(testObj){
 
@@ -34,7 +36,7 @@ app.factory('Tests', function($http){
 		submitTest: submitTest,
 		getTests: getTests,
 		deleteTest: deleteTest,
-		updateTestData:updateTestData
+		updateTestData:updateTestData,
 		statisticallySignificant:statisticallySignificant
 	};
 });
