@@ -17,7 +17,12 @@ app.controller('CurrentTestsController', function(Tests){
 		
 	});
 	this.toggleInput = function(id){
-		this.showInput = id;
+		if(this.showInput === id){
+			this.showInput = false;
+		} else {
+			this.showInput = id;
+		}
+		
 	}
 	this.updateTestData = function(id,index){
 		Tests.updateTestData(id,this.updateTest.clicks_1, this.updateTest.impressions_1, this.updateTest.clicks_2, this.updateTest.impressions_2);

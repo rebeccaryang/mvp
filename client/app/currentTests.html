@@ -1,9 +1,12 @@
 	<div ng-app="abArchive.currentTests" ng-controller="CurrentTestsController as currentCtrl">
-		<h1>Current Ad Copy Tests</h1>
+		<div class="subtitle">Current Ad Copy Tests</div>
+		<br>
+		<i>Statistically significant winners will be highlighted</i>
+			<div class="testContainer">
 			<table>
 				<tr ng-repeat="test in currentCtrl.currentTests">
 					<td ng-click='currentCtrl.toggleInput(test._id)'>
-					<table ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}">
+					<table class="testDisplay" ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}">
 						<tr>
 							<td>
 								<div class='headline'>{{test.headline_1}}</div>
@@ -18,8 +21,7 @@
 								<input type='text' value="{{test.clicks_1}}" ng-model='currentCtrl.updateTest.clicks_1' ng-show="test._id === currentCtrl.showInput">
 								<div class='impressions'>Impressions: {{test.impressions_1}}</div>
 								<input type='text' value="{{test.impressions_1}}" ng-model='currentCtrl.updateTest.impressions_1' ng-show="test._id === currentCtrl.showInput">
-								<div class='ctr'>CTR: {{(test.ctr_1*100).toFixed(2)+"%"}}</div>
-								<div class='winnerText' ng-show="test.winner === true && test.ctr_1 > test.ctr_2"> WINNER! </div>
+								<div class='ctr'>Click-through Rate: {{(test.ctr_1*100).toFixed(2)+"%"}}</div>
 							</td>
 						</tr>	
 					</table>
@@ -27,7 +29,7 @@
 					vs. 
 					</td>
 					<td ng-click='currentCtrl.toggleInput(test._id)'>
-						<table ng-class="{winner:test.winner === true && test.ctr_1 < test.ctr_2}">
+						<table class="testDisplay" ng-class="{winner:test.winner === true && test.ctr_1 < test.ctr_2}">
 							<tr>
 								<td>
 									<div class='headline'>{{test.headline_2}}</div>
@@ -43,8 +45,7 @@
 									<div class='impressions'>Impressions: {{test.impressions_2}}</div>
 									<input type='text' value="{{test.impressions_2}}" ng-model='currentCtrl.updateTest.impressions_2' ng-show="test._id === currentCtrl.showInput">
 									<input type='button' value='Update' ng-show="test._id === currentCtrl.showInput" ng-click='currentCtrl.updateTestData(test._id,$index)'>
-									<div class='ctr'>CTR: {{(test.ctr_2*100).toFixed(2)+"%"}}</div>
-									<div class='winnerText' ng-show="test.winner === true && test.ctr_1 < test.ctr_2"> WINNER! </div>
+									<div class='ctr'>Click-through Rate: {{(test.ctr_2*100).toFixed(2)+"%"}}</div>
 								</td>
 							</tr>	
 						</table>
@@ -55,4 +56,5 @@
 					</td>
 				</tr>
 		</table>
+		</div>
 	</div>
