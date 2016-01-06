@@ -1,13 +1,14 @@
 var app = angular.module('abArchive.services', []);
 
-app.factory('Tests', function($http){
-	var submitTest = function(testObj){
+app.factory('Tests', function($http,$location){
+	var submitTest = function(testObj,callback){
 		return $http({
 			method: 'POST',
 			url: '/tests',
 			data: testObj
+		}).then(function(resp){
+			$location.path('/currenttests')
 		})
-		console.log("Attempting to submit test")
 	};
 	var getTests = function(callback){
 		return $http({
@@ -18,13 +19,13 @@ app.factory('Tests', function($http){
 		})
 
 	}
-	var updateTestData = function(testID, clicks1,impressions1,clicks2,impressions2){
+	var updateTestData = function(testID, clicks1,impressions1,clicks2,impressions2,callback){
 		return $http({
 			method:'POST',
 			url:'/tests/update',
 			data: {testID: testID, clicks1:clicks1, impressions1:impressions1, clicks2:clicks2, impressions2:impressions2}
 		}).then( function(resp){
-			console.log("Successfully submitted post request to /tests/update");
+			callback();
 		})
 	}
 	var deleteTest = function(testID){

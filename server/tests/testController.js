@@ -26,7 +26,7 @@ module.exports = {
 					console.log('ERROR ADDING TO MONGO')
 					console.log(err);
 				} else {
-					return content;
+					return res.json(content);
 				}
 			})
 		},
@@ -42,7 +42,7 @@ module.exports = {
 						console.log('Error with saving!');
 						console.log(err);	
 					} else {
-						return docuThing;
+						return res.json(docuThing);
 					}
 				})
 
@@ -50,11 +50,11 @@ module.exports = {
 		},
 		deleteTest: function(req,res){
 			var id = req.body.testID;
-			Test.findOneAndRemove({_id:id}, function(err,doc,res){
+			Test.findOneAndRemove({_id:id}, function(err,doc){
 				if(err){
 					console.log("ERROR")
 				} else {
-					return id;
+					return res.json(doc)
 				}
 			})
 		}

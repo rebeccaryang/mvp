@@ -1,9 +1,10 @@
 var app = angular.module('abArchive.currentTests', ['abArchive.services']);
 
-app.controller('CurrentTestsController', function(Tests){
+app.controller('CurrentTestsController', function(Tests, $timeout){
 	this.currentTests = [];
 	this.showInput = false;
 	this.updateTest = {}
+	this.spinner = {};
 	var that = this;
 	Tests.getTests(function(data){
 		_.each(data, function(elem){
@@ -25,7 +26,17 @@ app.controller('CurrentTestsController', function(Tests){
 		
 	}
 	this.updateTestData = function(id,index){
-		Tests.updateTestData(id,this.updateTest.clicks_1, this.updateTest.impressions_1, this.updateTest.clicks_2, this.updateTest.impressions_2);
+		var spinnerTemp = this.spinner;
+		this.spinner[index] = true;
+		var that = this
+		var endSpinner = function(){
+			$timeout(function(){
+				that.spinner[index] = false;
+			}, 1000)
+
+		}
+		that.showInput = false;
+		Tests.updateTestData(id,this.updateTest.clicks_1, this.updateTest.impressions_1, this.updateTest.clicks_2, this.updateTest.impressions_2,endSpinner);
 		this.currentTests[index].clicks_1 = this.updateTest.clicks_1;
 		this.currentTests[index].clicks_2 = this.updateTest.clicks_2;
 		this.currentTests[index].impressions_1 = this.updateTest.impressions_1;
@@ -33,7 +44,6 @@ app.controller('CurrentTestsController', function(Tests){
 		this.currentTests[index].ctr_1 = this.updateTest.clicks_1/this.updateTest.impressions_1;
 		this.currentTests[index].ctr_2 = this.updateTest.clicks_2/this.updateTest.impressions_2;
 		this.currentTests[index].winner = Tests.statisticallySignificant(this.updateTest.clicks_1,this.updateTest.impressions_1,this.updateTest.clicks_2,this.updateTest.impressions_2)
-		console.log(this.currentTests[index].winner)
 	}
 	this.delete = function(id,index){
 		Tests.deleteTest(id);

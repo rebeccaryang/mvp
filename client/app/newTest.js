@@ -1,6 +1,6 @@
 var app = angular.module('abArchive.newTest', ['abArchive.services','abArchive.currentTests']);
 
-app.controller('testController', function(Tests){
+app.controller('testController', function($location,Tests){
 	this.ad1 = {
 		headline:"",
 		descriptionLine1:"",
@@ -29,8 +29,6 @@ app.controller('testController', function(Tests){
 		obj.desc2_2 = this.ad2.descriptionLine2;
 		obj.display_1 = this.ad1.displayURL;
 		obj.display_2 = this.ad2.displayURL;
-		console.log("Add new being called on app.js")
-		console.log(obj);
 		Tests.submitTest(obj);
 	}
 })
