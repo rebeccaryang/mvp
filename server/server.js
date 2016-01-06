@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 
 
 mongoose.connect('mongodb://localhost/abarchive');
-
-app.set("port", 3000);
+var port = process.env.port || 3000
+app.set("port", port);
 app.post('/tests', function(req,res){
 	testController.tests.post(req,res);
 })
