@@ -11,7 +11,9 @@ var app = express();
 app.use(bodyParser.json());
 
 
-mongoose.connect('mongodb://heroku_q7zlb01r:p8t2cmjbcptmd1l7fmonoa138u@ds039115.mongolab.com:39115/heroku_q7zlb01r');
+
+mongoose.connect('mongodb://localhost/abarchive');
+
 var port = process.env.PORT || 3000
 app.set("port", port);
 app.post('/tests', function(req,res){
