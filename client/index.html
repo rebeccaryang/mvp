@@ -4,13 +4,14 @@
 		<meta charset="utf-8" />
 		<title>A/B Archive</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel='stylesheet' href='bower_components/Materialize/bin/materialize.css'>
 		<link rel='stylesheet' type="text/css" href="style.css" />
 		<!-- Dependencies -->
 		<script src="bower_components/underscore/underscore.js"></script>
 		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src='bower_components/Materialize/bin/materialize.js'></script>
 		<!-- My Scripts -->
 		<script src="services/services.js"></script>
 		<script src="app.js"></script>
@@ -18,24 +19,17 @@
 		<script src="app/newTest.js"></script>
 	</head>
 	<body>
-	<nav class="navbar navbar-fixed">
-		<div class="container-fluid">
-			<div class="navbar-brand">
-				A/B Archive
+		<nav>
+			<div class="nav-wrapper light-blue darken-1">
+				<div class='brand-logo left'>A/B Archive</div>
+				<ul class="right" class="active">
+				<li><a href="/#currenttests">Current Tests</a></li>
+				<li><a href="/#newtest">New Test</a></li>
+				</ul>
 			</div>
-			<ul class="nav nav-pills" class="active">
-				<li>
-				<a href="/#currenttests">Current Tests</a>
-			</li>
-			<li>
-				<a href="/#newtest">New Test</a>
-			</li>
-			</ul>
+		</nav>
+		<div class="canvas" ng-app="abArchive">
+			<ng-view></ng-view>
 		</div>
-	</nav>
-	<div class="canvas" ng-app="abArchive">
-	<ng-view></ng-view>
-</div>
-
 	</body>
 </html>
