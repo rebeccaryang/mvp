@@ -1,9 +1,16 @@
 	<div ng-app="abArchive.currentTests" ng-controller="CurrentTestsController as currentCtrl">
-		<div class="subtitle">Current Ad Copy Tests</div>
-		<br>
-		<i>Statistically significant winners will be highlighted</i>
-		<div class="searchBarContainer">
-			<input class="searchBar" type='text' ng-model='searchBar'>
+
+
+		<div class="container">
+		<div class="row">
+
+		<div class="input__search input-field center-aligned"> 
+			<input name="searchBar" id='search' type='search' ng-model='searchBar'> 
+			<label for="searchBar">Search all tests</label>
+
+		</div>
+			
+		</div>
 		</div>
 			<div class="testContainer">
 			<table>
