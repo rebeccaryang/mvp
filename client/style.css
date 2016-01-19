@@ -53,8 +53,11 @@ TO DO: MAKE IT STYLIN'
 	border-color: red;
 	border-width: 3px;
 }
-.testContainer {
-	margin:10px;
+.rowContainer {
+	display:flex;
+/*	flex-direction:row;
+*/	justify-content:center;
+
 }
 
 .newheadline {
@@ -82,7 +85,12 @@ TO DO: MAKE IT STYLIN'
 }
 
 .input__search {
-	display:flex;
 	margin-top: 3rem;
-	justify-content:center;
 }
+
+.adCard:nth-child(odd) {
+	margin-right: 1rem;
+}
+.adCard:nth-child(even) {
+	margin-left: 1rem
+;};

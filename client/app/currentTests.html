@@ -1,71 +1,103 @@
-	<div ng-app="abArchive.currentTests" ng-controller="CurrentTestsController as currentCtrl">
+  <div ng-app="abArchive.currentTests" ng-controller="CurrentTestsController as currentCtrl">
+    <div>
+      <div class="row">
+        <nav>
+           <div class="nav-wrapper orange lighten-2 input__search">
+             <form>
+               <div class="input-field">
+                 <input name='searchBar' id="search" type="search" ng-model='searchBar'>
+                 <label for="search"><i class="material-icons">search</i></label>
+                 <i class="material-icons">close</i>
+               </div>
+             </form>
+           </div>
+         </nav>
+      </div>
+    </div>
+    <!-- BEGIN TESTING CARDS -->
+    <div class="testContainer col s12">
+      <div class="row rowContainer" ng-repeat="test in currentCtrl.currentTests | filter:searchBar">
+          <div class="adCard card col s6">
+              <div class="card-content">
+                <div class='headline'>{{test.headline_1}}</div>
+                <div class='description'>{{test.desc1_1}}</div>
+                <div class='description'>{{test.desc2_1}}</div>
+                <div class='display'>{{test.display_1}}</div>
+              </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
 
+        <div class="adCard card col s6">
+          <div class="card-content">
+            <div class='headline'>{{test.headline_2}}</div>
+            <div class='description'>{{test.desc1_2}}</div>
+            <div class='description'>{{test.desc2_2}}</div>
+            <div class='display'>{{test.display_2}}</div>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+  </div>
+    <!-- END TESTING CARDS -->
 
-		<div class="container">
-		<div class="row">
+      <div class="testContainer">
+      <table>
+        <tr ng-repeat="test in currentCtrl.currentTests | filter:searchBar">
+          <td >
+          <table class="testDisplay">
+            <tr>
+              <td ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}" ng-click='currentCtrl.toggleInput(test._id)'>
+                <div class='headline'>{{test.headline_1}}</div>
+                <div class='description'>{{test.desc1_1}}</div>
+                <div class='description'>{{test.desc2_1}}</div>
+                <div class='display'>{{test.display_1}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class='metrics'>
+                <div class='clicks'>Clicks: {{test.clicks_1}}</div>
+                <input type='text' value="{{test.clicks_1}}" ng-model='currentCtrl.updateTest.clicks_1' ng-show="test._id === currentCtrl.showInput">
+                <div class='impressions'>Impressions: {{test.impressions_1}}</div>
+                <input type='text' value="{{test.impressions_1}}" ng-model='currentCtrl.updateTest.impressions_1' ng-show="test._id === currentCtrl.showInput">
+                <div class='ctr'>Click-through Rate: {{(test.ctr_1*100).toFixed(2)+"%"}}</div>
+              </td>
+            </tr> 
+          </table>
+          <td class='vs'>
+          vs. 
+          </td>
+          <td>
+            <table class="testDisplay" >
+              <tr>
+                <td ng-class="{winner:test.winner === true && test.ctr_1 < test.ctr_2}" ng-click='currentCtrl.toggleInput(test._id)'>
+                  <div class='headline'>{{test.headline_2}}</div>
+                  <div class='description'>{{test.desc1_2}}</div>
+                  <div class='description'>{{test.desc2_2}}</div>
+                  <div class='display'>{{test.display_2}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td class='metrics'>
+                  <div class='clicks'>Clicks: {{test.clicks_2}}</div>
+                  <input type='text' ng-model='currentCtrl.updateTest.clicks_2' ng-show="test._id === currentCtrl.showInput">
+                  <div class='impressions'>Impressions: {{test.impressions_2}}</div>
+                  <input type='text' value="{{test.impressions_2}}" ng-model='currentCtrl.updateTest.impressions_2' ng-show="test._id === currentCtrl.showInput">
+                  <input type='button' value='Update' ng-show="test._id === currentCtrl.showInput" ng-click='currentCtrl.updateTestData(test._id,$index)'>
+                  <div class='ctr'>Click-through Rate: {{(test.ctr_2*100).toFixed(2)+"%"}}</div>
+                </td>
+              </tr> 
+            </table>
+          </td>
+          <td>
+            <i class="fa fa-cog fa-spin fa-3x" ng-show='currentCtrl.spinner[$index] === true'></i><br>
+            <input type='submit' value="delete" ng-click="currentCtrl.delete(test._id,$index)">
 
-		<div class="input__search input-field center-aligned"> 
-			<input name="searchBar" id='search' type='search' ng-model='searchBar'> 
-			<label for="searchBar">Search all tests</label>
-
-		</div>
-			
-		</div>
-		</div>
-			<div class="testContainer">
-			<table>
-				<tr ng-repeat="test in currentCtrl.currentTests | filter:searchBar">
-					<td >
-					<table class="testDisplay">
-						<tr>
-							<td ng-class="{winner:test.winner === true && test.ctr_1 > test.ctr_2}" ng-click='currentCtrl.toggleInput(test._id)'>
-								<div class='headline'>{{test.headline_1}}</div>
-								<div class='description'>{{test.desc1_1}}</div>
-								<div class='description'>{{test.desc2_1}}</div>
-								<div class='display'>{{test.display_1}}</div>
-							</td>
-						</tr>
-						<tr>
-							<td class='metrics'>
-								<div class='clicks'>Clicks: {{test.clicks_1}}</div>
-								<input type='text' value="{{test.clicks_1}}" ng-model='currentCtrl.updateTest.clicks_1' ng-show="test._id === currentCtrl.showInput">
-								<div class='impressions'>Impressions: {{test.impressions_1}}</div>
-								<input type='text' value="{{test.impressions_1}}" ng-model='currentCtrl.updateTest.impressions_1' ng-show="test._id === currentCtrl.showInput">
-								<div class='ctr'>Click-through Rate: {{(test.ctr_1*100).toFixed(2)+"%"}}</div>
-							</td>
-						</tr>	
-					</table>
-					<td class='vs'>
-					vs. 
-					</td>
-					<td>
-						<table class="testDisplay" >
-							<tr>
-								<td ng-class="{winner:test.winner === true && test.ctr_1 < test.ctr_2}" ng-click='currentCtrl.toggleInput(test._id)'>
-									<div class='headline'>{{test.headline_2}}</div>
-									<div class='description'>{{test.desc1_2}}</div>
-									<div class='description'>{{test.desc2_2}}</div>
-									<div class='display'>{{test.display_2}}</div>
-								</td>
-							</tr>
-							<tr>
-								<td class='metrics'>
-									<div class='clicks'>Clicks: {{test.clicks_2}}</div>
-									<input type='text' ng-model='currentCtrl.updateTest.clicks_2' ng-show="test._id === currentCtrl.showInput">
-									<div class='impressions'>Impressions: {{test.impressions_2}}</div>
-									<input type='text' value="{{test.impressions_2}}" ng-model='currentCtrl.updateTest.impressions_2' ng-show="test._id === currentCtrl.showInput">
-									<input type='button' value='Update' ng-show="test._id === currentCtrl.showInput" ng-click='currentCtrl.updateTestData(test._id,$index)'>
-									<div class='ctr'>Click-through Rate: {{(test.ctr_2*100).toFixed(2)+"%"}}</div>
-								</td>
-							</tr>	
-						</table>
-					</td>
-					<td>
-						<i class="fa fa-cog fa-spin fa-3x" ng-show='currentCtrl.spinner[$index] === true'></i><br>
-						<input type='submit' value="delete" ng-click="currentCtrl.delete(test._id,$index)">
-
-					</td>
-				</tr>
-		</table>
-		</div>
-	</div>
+          </td>
+        </tr>
+    </table>
+    </div>
+  </div>
